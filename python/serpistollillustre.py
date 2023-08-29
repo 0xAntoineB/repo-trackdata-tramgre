@@ -390,6 +390,7 @@ def write_users_data() -> None:
         print(error)
 
 def filter_csv_data(value) -> None:
+    """"""
 
     filtered_data = []
 
@@ -410,6 +411,7 @@ def filter_csv_data(value) -> None:
     return filtered_data
 
 def append_new_data() -> None:
+    """"""
 
     try:
 
