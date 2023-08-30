@@ -371,7 +371,7 @@ def get_data_response() -> list:
 
     return data 
 
-def write_users_data() -> None:
+def write_tram_data() -> None:
     """"""
 
     try:
@@ -437,5 +437,5 @@ def append_new_data() -> None:
 
         print(error)
 
-#write_users_data()
+#write_tram_data()
 #append_new_data()
