@@ -95,8 +95,12 @@ def get_time_stopname(datajson:dict) -> str:
     for element in datajson:
         for elements in element["times"]:
 
-            key = elements["stopName"]
-            data.append(key)
+            try:
+                key = elements["stopName"]
+                data.append(key)
+            except:
+
+                data.append(None)
 
     return data
 
@@ -107,9 +111,13 @@ def get_time_scheduledarrival(datajson:dict) -> int:
 
     for element in datajson:
         for elements in element["times"]:
+            
+            try:
+                key = elements["scheduledArrival"]
+                data.append(key)
+            except:
 
-            key = elements["scheduledArrival"]
-            data.append(key)
+                data.append(None)
 
     return data
 
@@ -120,10 +128,12 @@ def get_time_scheduleddeparture(datajson:dict) -> int:
 
     for element in datajson:
         for elements in element["times"]:
+            try:
+                key = elements["scheduledDeparture"]
+                data.append(key)
+            except:
 
-            key = elements["scheduledDeparture"]
-            data.append(key)
-
+                data.append(None)
     return data
 
 def get_time_realtimearrival(datajson:dict) -> int:
@@ -133,10 +143,12 @@ def get_time_realtimearrival(datajson:dict) -> int:
 
     for element in datajson:
         for elements in element["times"]:
+            try:
+                key = elements["realtimeArrival"]
+                data.append(key)
+            except:
 
-            key = elements["realtimeArrival"]
-            data.append(key)
-
+                data.append(None)
     return data
 
 def get_time_realtimedeparture(datajson:dict) -> int:
@@ -146,10 +158,12 @@ def get_time_realtimedeparture(datajson:dict) -> int:
 
     for element in datajson:
         for elements in element["times"]:
+            try:
+                key = elements["realtimeDeparture"]
+                data.append(key)
+            except:
 
-            key = elements["realtimeDeparture"]
-            data.append(key)
-
+                data.append(None)
     return data
 
 def get_time_arrivaldelay(datajson:dict) -> int:
@@ -159,10 +173,12 @@ def get_time_arrivaldelay(datajson:dict) -> int:
 
     for element in datajson:
         for elements in element["times"]:
+            try:
+                key = elements["arrivalDelay"]
+                data.append(key)
+            except:
 
-            key = elements["arrivalDelay"]
-            data.append(key)
-
+                data.append(None)
     return data
 
 def get_time_departuredelay(datajson:dict) -> int:
@@ -172,10 +188,12 @@ def get_time_departuredelay(datajson:dict) -> int:
 
     for element in datajson:
         for elements in element["times"]:
+            try:
+                key = elements["departureDelay"]
+                data.append(key)
+            except:
 
-            key = elements["departureDelay"]
-            data.append(key)
-
+                data.append(None)
     return data
 
 def get_time_timepoint(datajson:dict) -> bool:
@@ -185,9 +203,15 @@ def get_time_timepoint(datajson:dict) -> bool:
 
     for element in datajson:
         for elements in element["times"]:
+            
+            try:
 
-            key = elements["timepoint"]
-            data.append(key)
+                key = elements["timepoint"]
+                data.append(key)
+
+            except:
+
+                data.append(None)
 
     return data
 
@@ -199,8 +223,14 @@ def get_time_realtime(datajson:dict) -> bool:
     for element in datajson:
         for elements in element["times"]:
 
-            key = elements["realtime"]
-            data.append(key)
+            try:
+
+                key = elements["realtime"]
+                data.append(key)
+
+            except:
+
+                data.append(None)
 
     return data
 
@@ -212,8 +242,14 @@ def get_time_realtimestate(datajson:dict) -> str:
     for element in datajson:
         for elements in element["times"]:
 
-            key = elements["realtimeState"]
-            data.append(key)
+            try:
+
+                key = elements["realtimeState"]
+                data.append(key)
+
+            except:
+
+                data.append(None)
 
     return data
 
@@ -225,8 +261,14 @@ def get_time_serviceday(datajson:dict) -> int:
     for element in datajson:
         for elements in element["times"]:
 
-            key = elements["serviceDay"]
-            data.append(key)
+            try:
+
+                key = elements["serviceDay"]
+                data.append(key)
+
+            except:
+
+                data.append(None)
 
     return data
 
@@ -237,9 +279,15 @@ def get_time_tripid(datajson:dict) -> str:
 
     for element in datajson:
         for elements in element["times"]:
+            
+            try:
 
-            key = elements["tripId"]
-            data.append(key)
+                key = elements["tripId"]
+                data.append(key)
+
+            except:
+
+                data.append(None)
 
     return data
 
@@ -251,9 +299,13 @@ def get_time_pickupyype(datajson:dict) -> str:
     for element in datajson:
         for elements in element["times"]:
 
-            key = elements["pickupType"]
-            data.append(key)
+            try:
+                key = elements["pickupType"]
+                data.append(key)
 
+            except:
+
+                data.append(None)
     return data
 
 def get_time_occupancy(datajson:dict) -> str:
@@ -282,14 +334,8 @@ def get_time_occupancyid(datajson:dict) -> int:
     for element in datajson:
         for elements in element["times"]:
 
-            try:
-
-                key = elements["occupancyId"]
-                data.append(key)
-
-            except:
-
-                data.append(None)
+            key = elements["occupancyId"]
+            data.append(key)
 
     return data
 
@@ -313,12 +359,6 @@ def get_data_response() -> list:
                 
             datajson = response.json()
 
-            pattern_id = get_pattern_id(datajson)
-            pattern_desc = get_pattern_desc(datajson)
-            pattern_dir = get_pattern_dir(datajson)
-            pattern_shortDesc = get_pattern_shortDesc(datajson)
-            pattern_lastStop = get_pattern_lastStop(datajson)
-            pattern_lastStopName = get_pattern_lastStopName(datajson)
             time_stopid = get_time_stopid(datajson)
             time_stopname = get_time_stopname(datajson)
             time_scheduledarrival = get_time_scheduledarrival(datajson)
@@ -338,13 +378,7 @@ def get_data_response() -> list:
 
 
 
-            for tuple in zip(pattern_id,
-                             pattern_desc,
-                             pattern_dir,
-                             pattern_shortDesc,
-                             pattern_lastStop,
-                             pattern_lastStopName,
-                             time_stopid,
+            for tuple in zip(time_stopid,
                              time_stopname,
                              time_scheduledarrival,
                              time_scheduleddeparture,
@@ -364,6 +398,7 @@ def get_data_response() -> list:
                                 
 
                 data.append(list(tuple))
+                print(data)
 
     except Exception as error:
 
@@ -400,7 +435,7 @@ def filter_csv_data(value) -> None:
 
             for row in reader:
 
-                if len(row) >= 20 and row[19] == value:
+                if len(row) >= 14 and row[13] == value:
                     filtered_data.append(row)
 
     except Exception as error:
@@ -420,7 +455,7 @@ def append_new_data() -> None:
 
             for line in data:
 
-                tripid = line[19]
+                tripid = line[13]
                 if not filter_csv_data(tripid):
 
                     writer.writerow(line)
@@ -429,7 +464,7 @@ def append_new_data() -> None:
 
                 else:
 
-                    print("sa existe :", line[19])
+                    print("sa existe :", line[13])
 
     except Exception as error:
 
